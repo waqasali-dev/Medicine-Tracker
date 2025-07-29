@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/admin.css">
+</head>
+
+<body class="container" id="admin-panel">
+    <h1>Admin Panel</h1>
+
+    <div class="header">
+        <nav>
+            <ul class="nav-links">
+                <li class="home-link"><a href="/">Home</a></li>
+                <li class="admin-link"><a href="/admin">Admin Panel</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <form class="form" id="med-details-form" method="post" action="/admin/add-medicine">
+        <div class="med-details-container" id="med-details-container">
+            <div class="med-details">
+
+                <select id="metod-2" class="method" name="method" required>
+                    <option value="add">Select...</option>
+                    <option value="add">Add Medicine</option>
+                    <option value="delete">Delete Medicine</option>
+                    <option value="update">Update Medicine</option>
+                </select>
+
+                <div class="med-name">
+
+                    <label for="medicineName">Medicine Name:</label>
+                    <input type="text" id="medicineName" name="medicineName" required>
+
+                </div>
+
+                <div class="med-formula">
+
+                    <label for="formula">Formula:</label>
+                    <input type="text" id="formula" name="formula" required>
+
+                </div>
+
+                <div class="med-manufacturer">
+
+                    <label for="formula">Manufacturer:</label>
+                    <input type="text" id="manufacturer" name="manufacturer" required>
+
+                </div>
+
+            </div>
+
+
+            <div class="dose-details">
+
+                <div class="med-dose">
+
+                    <label for="dose">Dose:</label>
+                    <input type="text" id="dose" class="dose" name="dose" required>
+
+                </div>
+
+                <div class="med-age">
+
+                    <div class="start-age">
+
+                        <label for="startAge">Start Age:</label>
+                        <input type="number" id="startAge" class="age" name="startAge" required>
+
+                    </div>
+                    <div class="end-age">
+
+                        <label for="endAge">End Age:</label>
+                        <input type="number" id="endAge" class="age" name="endAge" required>
+
+                    </div>
+
+                </div>
+                <div class="med-price">
+
+                    <div class="price-container">
+
+                        <label for="price">Price:</label>
+                        <input type="number" id="price" class="price" name="price" required>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <button class="add-dose" id="add-dose">Add dose</button>
+
+        <button id="submit-button" type="submit">Add Medicine</button>
+
+    </form>
+
+</body>
+
+<script src="/admin.js"></script>
+
+</html>

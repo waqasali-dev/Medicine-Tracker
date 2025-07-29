@@ -1,0 +1,221 @@
+
+.container {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #bac9e2;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.form, #med-details-form {
+
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    max-width: 900px;
+    min-width: 330px;
+    height: 480px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.35);
+    background-color: #f8f6f6;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.med-details{
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+
+}
+
+.med-name, .med-formula, .med-manufacturer{
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+#medicineName, #formula, #manufacturer, .dose, .age, .price{
+
+    width: 95%;
+    height: 15px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #a59c9c;
+    font-size: large;
+
+}
+
+.dose-details{
+
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 97%;
+}
+
+label {
+
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #202020;
+
+}
+
+#submit-button, .submit-button, .add-dose{
+
+    width: 100%;
+    height: 40px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 40px;
+
+}
+
+.med-age{
+
+    display: flex;
+    gap: 20px;
+    margin-left: 30px;
+
+}
+
+.start-age ,.end-age{
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.age{
+
+    width: 80%;
+
+}
+
+.remove-dose{
+
+    width: 20px;
+    height: 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+
+}
+
+.method{
+    width: 150px;
+    align-self: flex-end;
+    height: 25px;
+    border-radius: 8px;
+    border: 1px solid #a59c9c;
+}
+
+.form-2, .form-3{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    max-width: 900px;
+    min-width: 330px;
+    height: 480px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.35);
+    background-color: #f8f6f6;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.del-med-name{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+
+}
+
+.deleteMedicineName{
+    
+    width: 100%;
+    height: 15px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #a59c9c;
+    font-size: large;
+    margin-bottom: 20px;
+
+}
+
+.price-container, .med-dose, .start-age, .end-age{
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.med-dose{
+    width: 40%;
+}
+
+.med-price{
+    display: flex;
+    width: 40%;
+    margin-left: 20px;
+}
+
+.nav-links a, .home-link, .admin-link {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;  
+    color: #23406e;
+    font-weight: 700;
+    font-size: large;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    margin-left: -30px;
+}
+
+.update-med-name{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-bottom: 20px;
+}
+
+.updateMedicineName{
+    
+    width: 100%;
+    height: 15px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #a59c9c;
+    font-size: large;
+
+}
+
+.fetch-button{
+    width: 105%;
+}
+
+
+
+

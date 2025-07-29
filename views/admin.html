@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="../public/admin.css">
+</head>
+
+<body class="container" id="admin-panel">
+    <h1>Admin Panel</h1> 
+    <form class="form" id="med-details-form" method="post" action="/admin/add-medicine">
+        <div class="med-details-container" id="med-details-container">
+            <div class="med-details">
+
+                <select id="metod" class="method" name="method" required>
+                    <option value="add">Add Medicine</option>
+                    <option value="delete">Delete Medicine</option>
+                </select>
+
+                <div class="med-name">
+
+                    <label for="medicineName">Medicine Name:</label>
+                    <input type="text" id="medicineName" name="medicineName" required>
+
+                </div>
+
+                <div class="med-formula">
+
+                    <label for="formula">Formula:</label>
+                    <input type="text" id="formula" name="formula" required>
+
+                </div>
+
+                <div class="med-manufacturer">
+
+                    <label for="formula">Manufacturer:</label>
+                    <input type="text" id="manufacturer" name="manufacturer" required>
+
+                </div>
+
+            </div>
+
+
+            <div class="dose-details">
+
+                <div class="med-dose">
+
+                    <label for="dose">Dose:</label>
+                    <input type="text" id="dose" class="dose" name="dose" required>
+
+                </div>
+
+                <div class="med-age">
+
+                    <div class="start-age">
+
+                        <label for="startAge">Start Age:</label>
+                        <input type="number" id="startAge" class="age" name="startAge" required>
+
+                    </div>
+                    <div class="end-age">
+
+                        <label for="endAge">End Age:</label>
+                        <input type="number" id="endAge" class="age" name="endAge" required>
+
+                    </div>
+
+                </div>
+                <div class="med-price">
+
+                    <div class="price-container">
+
+                        <label for="price">Price:</label>
+                        <input type="number" id="price" class="price" name="price" required>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <button class="add-dose" id="add-dose">Add dose</button>
+
+        <button id="submit-button" type="submit">Add Medicine</button>
+
+    </form>
+
+    <form class="form-2" id="med-delete-form" method="post" action="/admin/delete-medicine">
+
+        <select id="metod-2" class="method" name="method" required>
+            <option value="add">Add Medicine</option>
+            <option value="delete">Delete Medicine</option>
+        </select>
+
+        <div class="del-med-name">
+
+            <label for="deleteMedicineName">Medicine Name to Delete:</label>
+            <input type="text" id="deleteMedicineName" class="deleteMedicineName" name="deleteMedicineName" required>
+
+        </div>
+
+        <button type="submit" class="submit-button">Delete Medicine</button>
+
+    </form>
+
+</body>
+
+<script src="../public/admin.js"></script>
+
+</html>

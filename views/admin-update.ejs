@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>/admin/update-medicine</title>
+    <link rel="stylesheet" href="/admin.css">
+</head>
+
+<body class="container" id="admin-panel">
+    <h1>Update Panel</h1>
+    <div class="header">
+        <nav>
+            <ul class="nav-links">
+                <li class="home-link"><a href="/">Home</a></li>
+                <li class="admin-link"><a href="/admin">Admin Panel</a></li>
+            </ul>
+        </nav>
+    </div>
+    <% if (medicine === false) { %>
+        <form class="form-2" id="med-fetch-form" method="post" action="/admin/fetch-medicine">
+            <div class="update-med-name">
+
+                <label for="updateMedicineName">Medicine Name to Update:</label>
+                <input type="text" id="updateMedicineName" class="updateMedicineName" name="updateMedicineName" required>
+
+                <button type="submit" class="submit-button fetch-button" value="fetch" id="fetch-medicine-data">Fetch Data</button>
+
+            </div>
+        </form>
+        <% } else if (locals.medicine) { %>
+            <form class="form-3" id="med-update-form" method="post" action="/admin/update-medicine">
+
+                <select id="metod-2" class="method" required>
+                    <option value="add">Select...</option>
+                    <option value="add">Add Medicine</option>
+                    <option value="delete">Delete Medicine</option>
+                    <option value="update">Update Medicine</option>
+                </select>
+                <div class="med-details-container" id="med-details-container">
+
+                    <div class="med-details">
+
+                        <div class="med-name">
+
+                            <label for="medicineName">Medicine Name:</label>
+                            <input type="text" id="medicineName" name="medicineName"
+                                value="<%= medicine[0].medicinename %>" autocomplete="off" autocomplete="off" required>
+
+                        </div>
+                        <div class="med-formula">
+
+                            <label for="formula">Formula:</label>
+                            <input type="text" id="formula" name="formula" value="<%= medicine[0].formula %>"
+                                autocomplete="off" required>
+
+                        </div>
+                        <div class="med-manufacturer">
+
+                            <label for="formula">Manufacturer:</label>
+                            <input type="text" id="manufacturer" name="manufacturer"
+                                value="<%= medicine[0].manufacturer %>" required>
+
+                        </div>
+
+                    </div>
+                    <% medicine.forEach(function (dose, idx) { %>
+                        <div class="dose-details">
+
+                            <div class="med-dose">
+
+                                <label for="dose">Dose:</label>
+                                <input type="text" id="dose" class="dose" name="dose" value="<%= dose.dosage %>"
+                                    required>
+
+                            </div>
+
+                            <div class="med-age">
+
+                                <div class="start-age">
+
+                                    <label for="startAge">Start Age:</label>
+                                    <input type="number" id="startAge" class="age" name="startAge"
+                                        value="<%= dose.agestart %>" required>
+
+                                </div>
+                                <div class="end-age">
+
+                                    <label for="endAge">End Age:</label>
+                                    <input type="number" id="endAge" class="age" name="endAge"
+                                        value="<%= dose.ageend %>" required>
+
+                                </div>
+
+                            </div>
+                            <div class="med-price">
+
+                                <div class="price-container">
+
+                                    <label for="price">Price:</label>
+                                    <input type="number" id="price" class="price" name="price" value="<%= dose.price %>"
+                                        required>
+
+                                </div>
+
+                                <button type="button" class="remove-dose" id="delete-dose">X</button>
+
+                            </div>
+
+                        </div>
+                        <% }); %>
+
+
+                </div>
+
+                <script>
+                    // Dynamically adjust the height of the update form based on the number of dose-details
+                    const medDetailsContainer2 = document.getElementById('med-details-container');
+                    const medUpdateForm = document.getElementById('med-update-form');
+                    if (medDetailsContainer2 && medUpdateForm) {
+                        const doseCount = medDetailsContainer2.querySelectorAll('.dose-details').length;
+                        // Base height is 600px, add 88px for each dose-details beyond the first
+                        const baseHeight = 500;
+                        const extraHeight = doseCount > 1 ? (doseCount - 1) * 88 : 0;
+                        medUpdateForm.style.height = `${baseHeight + extraHeight}px`;
+                    }
+                </script>
+
+                <button class="add-dose" id="add-dose">Add dose</button>
+
+                <button type="submit" class="submit-button">Update Medicine</button>
+
+
+
+
+
+
+            </form>
+            <% } %>
+
+</body>
+
+<script>
+
+    const addDoseBtn = document.getElementById('add-dose');
+
+    addDoseBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+
+
+        const doseDetails = document.createElement('div');
+        doseDetails.classList.add('dose-details');
+
+
+        const medDose = document.createElement('div');
+        medDose.classList.add('med-dose');
+
+        const doseLabel = document.createElement('label');
+        doseLabel.setAttribute('for', 'dose');
+        doseLabel.textContent = 'Dose:';
+        medDose.appendChild(doseLabel);
+
+        const doseInput = document.createElement('input');
+        doseInput.setAttribute('type', 'text');
+        doseInput.setAttribute('id', 'dose');
+        doseInput.setAttribute('class', 'dose');
+        doseInput.setAttribute('name', 'dose');
+        doseInput.required = true;
+        medDose.appendChild(doseInput);
+
+        doseDetails.appendChild(medDose);
+
+
+        const medAge = document.createElement('div');
+        medAge.classList.add('med-age');
+
+
+        const startAgeDiv = document.createElement('div');
+        startAgeDiv.classList.add('start-age');
+
+        const startAgeLabel = document.createElement('label');
+        startAgeLabel.setAttribute('for', 'startAge');
+        startAgeLabel.textContent = 'Start Age:';
+        startAgeDiv.appendChild(startAgeLabel);
+
+        const startAgeInput = document.createElement('input');
+        startAgeInput.setAttribute('type', 'number');
+        startAgeInput.setAttribute('id', 'startAge');
+        startAgeInput.setAttribute('class', 'age');
+        startAgeInput.setAttribute('name', 'startAge');
+        startAgeInput.required = true;
+        startAgeDiv.appendChild(startAgeInput);
+
+
+        const endAgeDiv = document.createElement('div');
+        endAgeDiv.classList.add('end-age');
+
+        const endAgeLabel = document.createElement('label');
+        endAgeLabel.setAttribute('for', 'endAge');
+        endAgeLabel.textContent = 'End Age:';
+        endAgeDiv.appendChild(endAgeLabel);
+
+        const endAgeInput = document.createElement('input');
+        endAgeInput.setAttribute('type', 'number');
+        endAgeInput.setAttribute('id', 'endAge');
+        endAgeInput.setAttribute('class', 'age');
+        endAgeInput.setAttribute('name', 'endAge');
+        endAgeInput.required = true;
+        endAgeDiv.appendChild(endAgeInput);
+
+
+
+        const medPrice = document.createElement('div');
+        medPrice.classList.add('med-price');
+
+
+        const priceContainer = document.createElement('div');
+        priceContainer.classList.add('price-container');
+
+
+        const priceLabel = document.createElement('label');
+        priceLabel.setAttribute('for', 'price');
+        priceLabel.textContent = 'Price:';
+        priceContainer.appendChild(priceLabel);
+
+
+        const priceInput = document.createElement('input');
+        priceInput.setAttribute('type', 'number');
+        priceInput.setAttribute('id', 'price');
+        priceInput.setAttribute('class', 'price');
+        priceInput.setAttribute('name', 'price');
+        priceInput.required = true;
+        priceContainer.appendChild(priceInput);
+
+
+        medPrice.appendChild(priceContainer);
+
+
+        const removeDoseBtn = document.createElement('button');
+        removeDoseBtn.setAttribute('type', 'button');
+        removeDoseBtn.classList.add('remove-dose');
+        removeDoseBtn.setAttribute('id', 'delete-dose');
+        removeDoseBtn.textContent = 'X';
+
+
+        medPrice.appendChild(removeDoseBtn);
+
+        medAge.appendChild(startAgeDiv);
+        medAge.appendChild(endAgeDiv);
+
+        medPrice.appendChild(removeDoseBtn);
+        doseDetails.appendChild(medAge);
+        doseDetails.appendChild(medPrice);
+
+        medDetailsContainer.appendChild(doseDetails);
+
+        const medDetailForm = document.getElementById('med-update-form');
+
+        const currentHeight = parseInt(window.getComputedStyle(medDetailForm).height, 10);
+
+        medDetailForm.style.height = `${currentHeight + 88}px`;
+
+        const viewHeight = document.getElementById('admin-panel');
+        const currentViewHeight = parseInt(window.getComputedStyle(viewHeight).height, 10);
+        viewHeight.style.height = `${currentViewHeight + 88}px`;
+    });
+
+    // For the select dropdown
+    const methodSelect = document.getElementById('metod-2');
+    if (methodSelect) {
+        methodSelect.addEventListener('change', function () {
+            const value = this.value;
+            if (value === 'add') window.location.href = '/admin';
+            else if (value === 'delete') window.location.href = '/admin-delete';
+            else if (value === 'update') window.location.href = '/admin-update';
+        });
+    }
+
+    // For the dose container
+    const medDetailsContainer = document.getElementById('med-details-container');
+    if (medDetailsContainer) {
+        medDetailsContainer.addEventListener('click', function (event) {
+            if (event.target.classList.contains('remove-dose')) {
+                const doseDetails = event.target.closest('.dose-details');
+                if (doseDetails) {
+                    doseDetails.remove();
+
+                    const medDetailForm = document.getElementById('med-update-form');
+                    if (medDetailForm) {
+                        const currentHeight = parseInt(window.getComputedStyle(medDetailForm).height, 10);
+                        medDetailForm.style.height = `${currentHeight - 88}px`;
+                    }
+
+                    const viewHeight = document.getElementById('admin-panel');
+                    if (viewHeight) {
+                        const currentViewHeight = parseInt(window.getComputedStyle(viewHeight).height, 10);
+                        viewHeight.style.height = `${currentViewHeight - 88}px`;
+                    }
+                }
+            }
+        });
+    }
+
+</script>
+
+</html>

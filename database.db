@@ -1,0 +1,21 @@
+-- Create the medicine table
+CREATE TABLE medicine (
+    medicineName TEXT PRIMARY KEY,
+    formula TEXT NOT NULL,
+    manufacturer TEXT NOT NULL
+);
+
+-- Create the dose table with a unique constraint
+CREATE TABLE dose (
+    medicineName TEXT REFERENCES medicine(medicineName) ON DELETE CASCADE,
+    dosage TEXT NOT NULL,
+    ageStart INTEGER NOT NULL,
+    ageEnd INTEGER NOT NULL,
+    price NUMERIC(10, 2) NOT NULL,
+    CONSTRAINT unique_dose UNIQUE (medicineName, dosage)
+);
+
+-- Optional: Add check constraints for data integrity
+ALTER TABLE dose
+ADD CONSTRAINT age_check CHECK (ageStart <= ageEnd),
+ADD CONSTRAINT price_check CHECK (price > 0);
