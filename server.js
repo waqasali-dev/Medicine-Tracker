@@ -3,11 +3,11 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import pg from 'pg';
 import env from "dotenv";
-env.config();
+
 
 const app = express();
 const PORT = 3000;
-
+env.config();
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 
